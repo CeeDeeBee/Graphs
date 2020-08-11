@@ -10,34 +10,6 @@ def earliest_ancestor(ancestors, starting_node):
         else:
             verticies[edge[1]] = [edge[0]]
 
-    # sort sets to ensure lowest vertex is always checked first
-    # for key in verticies.keys():
-    #     verticies[key].sort()
-
-    # highest_depth = 0
-    # deepest_val = 0
-    # current_depth = 0
-    # s = Stack()
-    # s.push(starting_node)
-
-    # while s.size() > 0:
-    #     vertex = s.pop()
-
-    #     if vertex not in verticies.keys():
-    #         if current_depth > highest_depth:
-    #             deepest_val = vertex
-    #             highest_depth = current_depth
-
-    #         if vertex == starting_node:
-    #             return -1
-
-    #     else:
-    #         current_depth += 1
-    #         for n in verticies[vertex]:
-    #             s.push(n)
-
-    # return deepest_val
-
     s = Stack()
     s.push([starting_node])
     deepest_path = []
@@ -46,6 +18,7 @@ def earliest_ancestor(ancestors, starting_node):
         path = s.pop()
         vertex = path[-1]
 
+        # verticies with no ancestors will not be in the dict
         if vertex not in verticies.keys():
             if vertex == starting_node:
                 return -1
